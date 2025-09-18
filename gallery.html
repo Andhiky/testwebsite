@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semua Tentangmu 💖</title>
+  <meta name="description" content="Galeri foto kenangan penuh cinta dengan desain cute dan elegan.">
+  <meta name="theme-color" content="#ff4fa3">
+  <link rel="icon" href="images/861gk9gqka0c1.png" type="image/png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Lightbox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #fff5f7, #f8e0ff);
+      color: #4a1d42;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    body.loaded { opacity: 1; }
+
+    .brand-font {
+      font-family: 'Pacifico', cursive;
+    }
+    .cute-gradient {
+      background: linear-gradient(45deg, #ff4fa3, #c77dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .gallery-img {
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 77, 160, 0.4);
+    }
+    .filter-btn.active {
+      background: linear-gradient(to right, #ff4fa3, #c77dff);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="fixed w-full top-0 left-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+      <h1 class="text-2xl brand-font">💖 Semua Tentangmu</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="index.html" class="hover:text-yellow-200 transition">Home</a>
+        <a href="gallery.html" class="hover:text-yellow-200 transition">Galeri</a>
+        <a href="code.html" class="hover:text-yellow-200 transition">Code</a>
+      </nav>
+      <!-- Mobile menu -->
+      <button id="menu-btn" class="md:hidden text-2xl">💞</button>
+    </div>
+    <!-- Dropdown mobile -->
+    <div id="menu" class="hidden flex-col px-6 pb-4 bg-gradient-to-r from-pink-500 to-purple-500 md:hidden">
+    </div>
+  </header>
+  
+<!-- Hero -->
+<section class="relative h-[85vh] flex flex-col items-center justify-center text-center overflow-hidden mt-14">
+  <!-- Foto background -->
+  <img src="images/foto6.jpg" 
+       alt="Hero Kenangan" 
+       class="absolute inset-0 w-full h-full object-cover">
+
+  <!-- Overlay gradasi -->
+  <div class="absolute inset-0 bg-gradient-to-br from-pink-600/60 via-pink-400/50 to-purple-600/60"></div>
+
+  <!-- Konten -->
+  <div class="relative z-10 px-4 text-white">
+    <h1 class="text-4xl md:text-6xl font-bold brand-font drop-shadow-lg">
+      Galeri Kenangan Kita 💕
+    </h1>
+    <p class="mt-4 text-lg md:text-xl font-medium drop-shadow">
+      Dari fotbar penuh tawa hingga momen pribadi yang tak tergantikan ✨
+    </p>
+
+    <!-- Tombol Scroll -->
+    <a href="#gallery" class="mt-8 inline-block bg-white text-pink-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-110 transition transform">
+      ⬇️ Jelajahi Foto
+    </a>
+  </div>
+</section>
+
+  <!-- Filter -->
+  <div class="max-w-6xl mx-auto px-4 py-8 flex justify-center gap-4 flex-wrap">
+    <button class="filter-btn active px-6 py-2 rounded-full font-semibold shadow" data-filter="all">🌸 Semua</button>
+    <button class="filter-btn px-6 py-2 rounded-full font-semibold shadow bg-pink-100" data-filter="fotbar">📸 Fotbar</button>
+    <button class="filter-btn px-6 py-2 rounded-full font-semibold shadow bg-pink-100" data-filter="pribadi">💕 Pribadi</button>
+  </div>
+
+  <!-- Gallery -->
+  <main id="gallery" class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Fotbar -->
+    <a href="images/foto1.jpg" class="glightbox gallery-item fotbar"><img src="images/foto1.jpeg" alt="Foto 1" class="gallery-img"></a>
+    <a href="images/foto2.jpg" class="glightbox gallery-item fotbar"><img src="images/foto2.jpg" alt="Foto 2" class="gallery-img"></a>
+    <a href="images/foto3.jpg" class="glightbox gallery-item fotbar"><img src="images/foto3.jpg" alt="Foto 3" class="gallery-img"></a>
+
+    <!-- Pribadi -->
+    <a href="images/foto4.jpg" class="glightbox gallery-item pribadi"><img src="images/foto4.jpg" alt="Foto 4" class="gallery-img"></a>
+    <a href="images/foto5.jpg" class="glightbox gallery-item pribadi"><img src="images/foto5.jpg" alt="Foto 5" class="gallery-img"></a>
+    <a href="images/foto6.jpg" class="glightbox gallery-item pribadi"><img src="images/foto6.jpg" alt="Foto 6" class="gallery-img"></a>
+  </main>
+
+  <!-- Tombol ke Code -->
+  <div class="flex justify-center mb-16">
+    <a href="code.html" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-3 rounded-full text-lg font-bold shadow-lg hover:scale-110 transition-transform duration-300 animate-bounce">
+     Kembali
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-pink-600 to-purple-600 text-white py-10 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl brand-font mb-4">Album Kenangan Kita</h3>
+      <p class="mb-2">Foto mungkin hanya gambar, tapi setiap momen menyimpan cerita 💕</p>
+      <p class="text-sm text-pink-200">© 2025 Kenangan Kita</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    // Fade-in effect
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    // Lightbox init
+    const lightbox = GLightbox({ selector: '.glightbox' });
+
+    // Toggle mobile menu
+    document.getElementById("menu-btn").addEventListener("click", () => {
+      document.getElementById("menu").classList.toggle("hidden");
+    });
+
+    // Filter kategori
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active", "text-white"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+
+        galleryItems.forEach(item => {
+          if (filter === "all" || item.classList.contains(filter)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

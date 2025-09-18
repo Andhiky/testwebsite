@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday To You 🎂</title>
+  <meta name="description" content="Website kenangan penuh cinta berisi surat, galeri foto, dan momen spesial kita.">
+  <meta name="author" content="Gantengmu 🥴">
+  <meta name="theme-color" content="#ff4fa3">
+  <link rel="icon" href="images/861gk9gqka0c1.png" type="image/png">
+
+  <!-- Tailwind & Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- SwiperJS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff5f7;
+      color: #4a1d42;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    body.loaded { opacity: 1; }
+    .dancing-script { font-family: 'Dancing Script', cursive; }
+
+    /* HAPPY BIRTHDAY cute */
+    .cute-gradient {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-weight: bold;
+      background: linear-gradient(45deg, #ff4fa3, #c77dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      -webkit-text-stroke: 1.5px white;
+      text-shadow: 0 0 6px rgba(255,255,255,0.7);
+    }
+
+    /* subtext elegan */
+    .hero-subtext {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      background: rgba(0,0,0,0.3);
+      padding: 4px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      color: #fff;
+    }
+
+    .quote-box {
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .quote-box:hover { transform: scale(1.02); }
+
+    /* gallery square */
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    /* tombol scroll glow */
+    #scrollBtn {
+      box-shadow: 0 0 15px rgba(255, 77, 160, 0.6);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Music Player -->
+  <div class="fixed bottom-4 right-4 z-50">
+    <button id="musicBtn" class="bg-pink-500 text-white p-3 rounded-full shadow-lg hover:bg-pink-600 transition-all">
+      <i class="fas fa-music"></i>
+    </button>
+    <audio id="bgMusic" loop>
+      <source src="images/komang.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+<!-- Header -->
+<header class="fixed w-full top-0 left-0 text-white shadow-lg z-50 bg-pink-700/70 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+    <h1 class="text-2xl font-bold dancing-script">🎂Happy Birthday To You</h1>
+    
+    <!-- Desktop menu -->
+    <nav class="space-x-6 hidden md:flex">
+      <a href="#top" class="hover:text-pink-200 transition">🏠 Beranda</a>
+      <a href="#surat" class="hover:text-pink-200 transition">💌 Surat</a>
+      <a href="#galeri" class="hover:text-pink-200 transition">📸 Kenangan</a>
+      <a href="#quotes" class="hover:text-pink-200 transition">✨ Quotes</a>
+      <a href="gallery.html" class="hover:text-pink-200 transition">🖼️ Gallery</a>
+      <a href="wa.html" class="bg-white text-pink-600 px-3 py-1 rounded-full hover:bg-pink-100 transition">🎁 Kejutan</a>
+    </nav>
+
+    <!-- Hamburger -->
+    <button id="menuBtn" class="md:hidden text-white text-2xl transition-transform duration-300">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden flex-col bg-pink-700/90 backdrop-blur-md text-white px-6 py-6 space-y-4 md:hidden rounded-b-2xl shadow-lg transform transition-all duration-500 ease-in-out origin-top scale-y-0">
+    <a href="#top" class="hover:text-pink-200 flex items-center gap-2">🏠 Beranda</a>
+    <a href="#surat" class="hover:text-pink-200 flex items-center gap-2">💌 Surat</a>
+    <a href="#galeri" class="hover:text-pink-200 flex items-center gap-2">📸 Kenangan</a>
+    <a href="#quotes" class="hover:text-pink-200 flex items-center gap-2">✨ Quotes</a>
+    <a href="gallery.html" class="hover:text-pink-200 flex items-center gap-2">🖼️ Gallery</a>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="top" class="relative h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="images/hero.jpg" alt="Foto utama kenangan" class="w-full h-full object-cover opacity-90" loading="lazy"/>
+  </div>
+  <div class="relative z-10 text-center px-4 py-20 text-white">
+    <h1 class="cute-gradient mb-6">judul 🥳</h1>
+    <div class="space-y-2 mb-8">
+      <p class="hero-subtext">kata1</p>
+      <p class="hero-subtext">kata2</p>
+    </div>
+    <a href="#surat" id="scrollBtn" 
+       class="bg-white text-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-100 transition-all shadow-lg">
+      <i class="fas fa-heart mr-2"></i> Scroll Kebawah
+    </a>
+  </div>
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <i class="fas fa-chevron-down text-white text-2xl"></i>
+  </div>
+</section>
+
+<!-- Surat -->
+<section id="surat" class="py-20 px-4 md:px-10">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold dancing-script text-pink-600">Surat Untukmu 💌</h2>
+      <div class="w-24 h-1 bg-pink-300 mx-auto mt-4"></div>
+    </div>
+    <div class="prose max-w-none leading-relaxed">
+      <p class="text-lg mb-4">Aku tak pernah menyangka, bahwa kebahagiaan bisa sesederhana saat aku bersamamu.</p>
+      <p class="mb-4">Setiap senyummu, setiap kata darimu, adalah cahaya kecil yang selalu menenangkan hatiku.</p>
+      <p class="mb-4">Terima kasih sudah menjadi bagian terindah dalam hidupku.</p>
+      <p class="text-xl dancing-script text-pink-600 mb-6">Aku sayang kamu selalu 💕</p>
+      <p class="text-right dancing-script mt-8 text-2xl">Untukmu,<br><span class="font-bold">[Gantengmu 🥴]</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- Galeri -->
+<section id="galeri" class="py-20 px-4 bg-pink-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold dancing-script text-pink-600">Kenangan Kita 📸</h2>
+      <p class="text-gray-600 mt-2">Momen-momen berharga yang tak akan pernah terlupa</p>
+      <div class="w-24 h-1 bg-pink-300 mx-auto mt-4"></div>
+    </div>
+
+    <div class="swiper mySwiper max-w-4xl mx-auto">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/foto6.jpg" alt="Foto kenangan 6" class="gallery-img" loading="lazy"/></div>
+        <div class="swiper-slide"><img src="images/foto1.jpeg" alt="Foto kenangan 1" class="gallery-img" loading="lazy"/></div>
+        <div class="swiper-slide"><img src="images/foto2.jpg" alt="Foto kenangan 2" class="gallery-img" loading="lazy"/></div>
+        <div class="swiper-slide"><img src="images/foto3.jpg" alt="Foto kenangan 3" class="gallery-img" loading="lazy"/></div>
+        <div class="swiper-slide"><img src="images/foto4.jpg" alt="Foto kenangan 4" class="gallery-img" loading="lazy"/></div>
+        <div class="swiper-slide"><img src="images/foto5.jpeg" alt="Foto kenangan 5" class="gallery-img" loading="lazy"/></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next text-pink-600"></div>
+      <div class="swiper-button-prev text-pink-600"></div>
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <a href="gallery.html" 
+         class="bg-gradient-to-r from-pink-400 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg flex items-center gap-2 hover:scale-110 transition-transform duration-300 animate-bounce">
+         💖 Lihat Semua Foto 💖
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Quotes -->
+<section id="quotes" class="py-20 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold dancing-script text-pink-600">Quotes Cinta ✨</h2>
+      <div class="w-24 h-1 bg-pink-300 mx-auto mt-4"></div>
+    </div>
+    <div class="space-y-8">
+      <div class="bg-white p-6 rounded-xl shadow-md quote-box">
+        <div class="absolute -top-3 -left-3 text-pink-400 text-4xl"><i class="fas fa-quote-left"></i></div>
+        <p class="text-lg italic pl-8">Cinta itu sederhana, hadirmu sudah cukup jadi alasanku bahagia.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md quote-box">
+        <div class="absolute -top-3 -left-3 text-pink-400 text-4xl"><i class="fas fa-quote-left"></i></div>
+        <p class="text-lg italic pl-8">Kamu adalah rumah, tempat aku selalu ingin pulang.</p>
+      </div>
+    </div>
+        <div class="mt-10 flex justify-center">
+      <a href="wa.html" 
+         class="bg-gradient-to-r from-pink-400 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg flex items-center gap-2 hover:scale-110 transition-transform duration-300 animate-bounce">
+         💖 Secrets 💖
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-pink-900 text-white py-12 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <h3 class="text-2xl dancing-script mb-4">Selamanya Untukmu</h3>
+    <p class="mb-2">Dibuat dengan sepenuh hati dan segenap cinta 💖</p>
+    <p class="text-sm text-pink-300">© 2025 Kenangan Kita. Semua hak cinta dilindungi.</p>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Music Player
+  const musicBtn = document.getElementById('musicBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  let isPlaying = false;
+  musicBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+    } else {
+      bgMusic.play();
+      musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // Fade-in
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    let duration = 5000;
+    let end = Date.now() + duration;
+    (function frame() {
+      confetti({
+        particleCount: 6,
+        angle: 90,
+        spread: 70,
+        origin: { x: Math.random(), y: 0 },
+        colors: ['#ff4fa3', '#ff8ce6', '#c77dff', '#ffffff']
+      });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+  });
+
+  // Mobile menu animasi
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  let menuOpen = false;
+  menuBtn.addEventListener("click", () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.classList.remove("hidden");
+      setTimeout(() => {
+        mobileMenu.classList.remove("scale-y-0");
+        mobileMenu.classList.add("scale-y-100");
+      }, 10);
+      menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+      mobileMenu.classList.remove("scale-y-100");
+      mobileMenu.classList.add("scale-y-0");
+      setTimeout(() => {
+        mobileMenu.classList.add("hidden");
+      }, 500);
+      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+  });
+
+  // Swiper
+  new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    autoplay: { delay: 2500 },
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+  });
+
+  // Confetti saat klik scroll
+  document.getElementById("scrollBtn").addEventListener("click", () => {
+    confetti({ particleCount: 120, spread: 80, origin: { y: 0.7 } });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirim Pesan Cinta 💌</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ffdde1, #ee9ca7);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      overflow: hidden;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Animasi hati jatuh */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% {transform: translateY(0) rotate(0deg);}
+      100% {transform: translateY(110vh) rotate(360deg);}
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center h-screen text-white">
+  <div class="bg-white bg-opacity-20 backdrop-blur-lg p-8 rounded-2xl shadow-xl text-center max-w-md">
+    <h1 class="text-3xl font-bold mb-4">💌 Kirim Pesan Cinta</h1>
+    <p class="mb-6">Klik tombol di bawah untuk langsung kirim pesan lewat WhatsApp</p>
+    <a href="https://wa.me/6281234567890?text=Aku%20sayang%20kamu%20selalu%20💕"
+       target="_blank"
+       class="px-6 py-3 rounded-full bg-pink-600 text-white font-semibold hover:bg-pink-700 transition-all shadow-lg">
+      <i class="fab fa-whatsapp mr-2"></i> Kirim Pesan
+    </a>
+  </div>
+
+  <script>
+    // Membuat banyak hati jatuh
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 4) + "s"; // durasi random
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+</body>     
+</html>
